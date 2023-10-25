@@ -3,6 +3,16 @@ import Comment from "../models/comment.js";
 
 const router = Router();
 
+router.get("/", async (req, res) => {
+  try {
+    const posts = await Comment.find();
+    res.json(posts);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "An error occurred while fetching all comments" });
+  }
+});
+
 router.post("/create", async (req, res) => {
   try {
     const { content, author, postId } = req.body;
