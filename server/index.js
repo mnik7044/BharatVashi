@@ -2,8 +2,8 @@ import express from 'express';
 import 'dotenv/config';
 import profileRoute from './routes/profile.js';
 import postsRoute from './routes/posts.js';
-import createPostRoute from './routes/create-post.js';
-import addCommentRoute from './routes/add-comment.js'
+import commentRoute from './routes/comment.js'
+import './libs/mongo.js'
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -11,8 +11,7 @@ const PORT = process.env.PORT || 3000;
 // Routes
 app.use('/profile', profileRoute);
 app.use('/posts', postsRoute);
-app.use('/create-post', createPostRoute);
-app.use('/add-comment', addCommentRoute);
+app.use('/comment/', commentRoute);
 
 app.listen(PORT, (err) => {
   if (err) {
