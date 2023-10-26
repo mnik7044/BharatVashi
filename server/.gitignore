@@ -3,3 +3,10 @@
 
 # Environmental Files
 .env
+
+# Prisma
+/prisma/.env
+/prisma/migrations
+/prisma/dev.db-journal
+/prisma/client
+/prisma/dev.db
