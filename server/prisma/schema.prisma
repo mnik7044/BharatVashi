@@ -8,20 +8,30 @@ datasource db {
 }
 
 model User {
-  id           Int     @id @default(autoincrement())
-  email        String  @unique
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
   password     String
   name         String?
-  aadharNumber String  @unique
+  aadharNumber String   @unique
   profileUrl   String
-  phoneNumber  String  @unique
+  phoneNumber  String   @unique
+  Post         Post[]
+  Comment      Comment?
 }
 
 model Post {
-  id            Int      @id @default(autoincrement())
+  id            Int       @id @default(autoincrement())
   contentString String
   postUserId    Int
-  name          String
-  profileImgUrl String
-  createdAt     DateTime @default(now())
+  user          User      @relation(fields: [postUserId], references: [id])
+  Comment       Comment[]
+}
+
+model Comment {
+  id            Int    @id @default(autoincrement())
+  contentString String
+  postUserId    Int    @unique
+  postId        Int    @unique
+  user          User   @relation(fields: [postUserId], references: [id])
+  mainPost      Post   @relation(fields: [postId], references: [id])
 }
