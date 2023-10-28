@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { Router } from "express";
-import { checkPost, checkUser } from "../libs/libs.js";
+import { checkUser } from "../libs/libs.js";
 
 const router = Router();
 const prisma = new PrismaClient();
