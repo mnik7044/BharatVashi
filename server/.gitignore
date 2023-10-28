@@ -10,3 +10,4 @@
 /prisma/dev.db-journal
 /prisma/client
 /prisma/dev.db
+.DS_Store
